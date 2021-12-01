@@ -1,0 +1,27 @@
+{
+    "common": {
+        "lib": "sklearn",
+        "algorithm": "dbscan",
+        "data-format": "pandas",
+        "data-order": "F",
+        "dtype": "float32",
+        "device": "gpu"
+    },
+    "cases": [
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "hepmass_10K",
+                    "training":
+                    {
+                        "x": "data/hepmass_10K_x_train.npy",
+                        "y": "data/hepmass_10K_y_train.npy"
+                    }
+                }
+            ],
+            "eps": 5,
+            "min-samples": 3
+        }
+    ]
+}

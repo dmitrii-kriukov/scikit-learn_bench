@@ -1,0 +1,72 @@
+{
+    "common": {
+        "lib": "sklearn",
+        "data-format": "pandas",
+        "data-order": "F",
+        "dtype": "float32",
+        "device": "gpu"
+    },
+    "cases": [
+        {
+            "algorithm": "dbscan",
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "mnist",
+                    "training":
+                    {
+                        "x": "data/mnist_x_test.npy",
+                        "y": "data/mnist_y_test.npy"
+                    }
+                }
+            ],
+            "eps": 1.7e3,
+            "dtype": ["float32", "float64"],
+            "min-samples": 3
+        },
+        {
+            "algorithm": "kmeans",
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "higgs1m",
+                    "training":
+                    {
+                        "x": "data/higgs1m_x_train.npy",
+                        "y": "data/higgs1m_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/higgs1m_x_test.npy",
+                        "y": "data/higgs1m_y_test.npy"
+                    }
+                }
+            ],
+            "n-clusters": 10,
+            "maxiter": 100,
+            "tol": 0.0
+        },
+        {
+            "algorithm": "kmeans",
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "higgs1m",
+                    "training":
+                    {
+                        "x": "data/higgs1m_x_train.npy",
+                        "y": "data/higgs1m_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/higgs1m_x_test.npy",
+                        "y": "data/higgs1m_y_test.npy"
+                    }
+                }
+            ],
+            "n-clusters": [100, 250],
+            "maxiter": 10,
+            "tol": 0.0
+        }
+    ]
+}

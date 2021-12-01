@@ -4,74 +4,29 @@
         "data-format": "pandas",
         "data-order": "F",
         "dtype": "float64",
-        "device": ["host", "cpu", "gpu", "None"]
+        "device": "gpu"
     },
     "cases": [
         {
-            "algorithm": "kmeans",
+            "algorithm": "df_clsf",
             "dataset": [
                 {
-                    "source": "synthetic",
-                    "type": "blobs",
-                    "n_clusters": 10,
-                    "n_features": 50,
-                    "training": {
-                        "n_samples": 1000000
+                    "source": "npy",
+                    "name": "hepmass_150K",
+                    "training":
+                    {
+                        "x": "data/hepmass_150K_x_train.npy",
+                        "y": "data/hepmass_150K_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/hepmass_150K_x_test.npy",
+                        "y": "data/hepmass_150K_y_test.npy"
                     }
                 }
             ],
-            "n-clusters": 10
-        },
-        {
-            "algorithm": "dbscan",
-            "dataset": [
-                {
-                    "source": "synthetic",
-                    "type": "blobs",
-                    "n_clusters": 10,
-                    "n_features": 50,
-                    "training": {
-                        "n_samples": 10000
-                    }
-                }
-            ]
-        },
-        {
-            "algorithm": "linear",
-            "dataset": [
-                {
-                    "source": "synthetic",
-                    "type": "regression",
-                    "n_features": 50,
-                    "training": {
-                        "n_samples": 1000000
-                    }
-                }
-            ]
-        },
-        {
-            "algorithm": "log_reg",
-            "solver":["lbfgs", "newton-cg"],
-            "dataset": [
-                {
-                    "source": "synthetic",
-                    "type": "classification",
-                    "n_classes": 2,
-                    "n_features": 100,
-                    "training": {
-                        "n_samples": 100000
-                    }
-                },
-                {
-                    "source": "synthetic",
-                    "type": "classification",
-                    "n_classes": 5,
-                    "n_features": 100,
-                    "training": {
-                        "n_samples": 100000
-                    }
-                }
-            ]
+            "num-trees": 50,
+            "max-depth": 15
         }
     ]
 }

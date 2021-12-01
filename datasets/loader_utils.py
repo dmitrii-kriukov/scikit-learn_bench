@@ -68,7 +68,6 @@ def read_libsvm_msrank(file_obj, n_samples, n_features, dtype):
 
     return np.array(X, dtype=dtype), np.array(y, dtype=dtype)
 
-
 def _make_gen(reader):
     b = reader(1024 * 1024)
     while b:

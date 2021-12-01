@@ -1,0 +1,102 @@
+{
+    "common": {
+        "lib": "sklearn",
+        "algorithm": "kmeans",
+        "data-format": "pandas",
+        "data-order": "F",
+        "dtype": "float64",
+        "device": "gpu"
+    },
+    "cases": [
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "higgs1m",
+                    "training":
+                    {
+                        "x": "data/higgs1m_x_train.npy"
+                    }
+                }
+            ],
+            "n-clusters": 10,
+            "maxiter": 100,
+            "tol": 0.0
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "higgs1m",
+                    "training":
+                    {
+                        "x": "data/higgs1m_x_train.npy"
+                    }
+                }
+            ],
+            "n-clusters": [100, 250],
+            "maxiter": 10,
+            "tol": 0.0
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "epsilon_50K",
+                    "training":
+                    {
+                        "x": "data/epsilon_50K_x_train.npy"
+                    }
+                }
+            ],
+            "n-clusters": [512, 1024, 2048],
+            "maxiter": 10,
+            "tol": 0.0
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "hepmass_1M",
+                    "training":
+                    {
+                        "x": "data/hepmass_1M_x_train.npy"
+                    }
+                }
+            ],
+            "n-clusters": [100, 250],
+            "maxiter": 10,
+            "tol": 0.0
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "hepmass_1M",
+                    "training":
+                    {
+                        "x": "data/hepmass_1M_x_train.npy"
+                    }
+                }
+            ],
+            "n-clusters": 10,
+            "maxiter": 100,
+            "tol": 0.0
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "cifar",
+                    "training":
+                    {
+                        "x": "data/cifar_x_train.npy"
+                    }
+                }
+            ],
+            "n-clusters": [512, 1024, 2048],
+            "maxiter": 10,
+            "tol": 0.0
+        }
+    ]
+}

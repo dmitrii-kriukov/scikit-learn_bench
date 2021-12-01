@@ -295,3 +295,11 @@ def airline_regression(dataset_dir: Path) -> bool:
         np.save(os.path.join(dataset_dir, filename), data)
     logging.info(f'dataset {dataset_name} is ready.')
     return True
+
+
+# def road_network_20K(dataset_dir: Path) -> bool:
+#     """
+#     3DRoadNetwork dataset from UCI repository (
+#     http://archive.ics.uci.edu/ml/datasets/3D+Road+Network+%28North+Jutland%2c+Denmark%29#)
+#     road_network x cluster dataset (20000, 4)
+#     ""

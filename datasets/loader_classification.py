@@ -334,6 +334,41 @@ def epsilon(dataset_dir: Path) -> bool:
     return True
 
 
+def epsilon_100K(dataset_dir: Path) -> bool:
+    """
+    Epsilon dataset
+    https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html
+
+    Classification task. n_classes = 2.
+    epsilon_100K x train dataset (50000, 2000)
+    epsilon_100K y train dataset (50000, 1)
+    """
+    dataset_name = 'epsilon_100K'
+    os.makedirs(dataset_dir, exist_ok=True)
+
+    url= 'https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary' \
+                '/epsilon_normalized.bz2'
+    local_url = os.path.join(dataset_dir, os.path.basename(url))
+
+    num_train = 50000
+    if not os.path.isfile(local_url):
+        logging.info(f'Started loading {dataset_name}')
+        retrieve(url, local_url)
+    logging.info(f'{dataset_name} is loaded, started parsing...')
+    X_train, y_train = load_svmlight_file(local_url,
+                                        dtype=np.float32)
+
+    X_train = X_train.toarray()[:num_train]
+    y_train = y_train[:num_train]
+    y_train[y_train <= 0] = 0
+
+    for data, name in zip((X_train, y_train),
+                          ('x_train', 'y_train')):
+        filename = f'{dataset_name}_{name}.npy'
+        np.save(os.path.join(dataset_dir, filename), data)
+    return True
+
+
 def fraud(dataset_dir: Path) -> bool:
     """
     Credit Card Fraud Detection contest
@@ -509,17 +544,231 @@ def higgs_one_m(dataset_dir: Path) -> bool:
                             compression="gzip", dtype=dtype,
                             nrows=nrows_train + nrows_test)
 
-    data = data[list(data.columns[1:]) + list(data.columns[0:1])]
-    n_features = data.shape[1] - 1
-    train_data = np.ascontiguousarray(data.values[:nrows_train, :n_features], dtype=dtype)
-    train_label = np.ascontiguousarray(data.values[:nrows_train, n_features], dtype=dtype)
-    test_data = np.ascontiguousarray(
-        data.values[nrows_train: nrows_train + nrows_test, : n_features],
-        dtype=dtype)
-    test_label = np.ascontiguousarray(
-        data.values[nrows_train: nrows_train + nrows_test, n_features],
-        dtype=dtype)
-    for data, name in zip((train_data, test_data, train_label, test_label),
+    X = data[data.columns[1:]]
+    y =  data[data.columns[0:1]]
+
+    x_train, x_test, y_train, y_test = train_test_split(
+        X, y, train_size=nrows_train, test_size=nrows_test, shuffle=False)
+
+    for data, name in zip((x_train, x_test, y_train, y_test),
+                          ('x_train', 'x_test', 'y_train', 'y_test')):
+        filename = f'{dataset_name}_{name}.npy'
+        np.save(os.path.join(dataset_dir, filename), data)
+    logging.info(f'dataset {dataset_name} is ready.')
+    return True
+
+
+def higgs_150K(dataset_dir: Path) -> bool:
+    """
+    Higgs dataset from UCI machine learning repository
+    https://archive.ics.uci.edu/ml/datasets/HIGGS
+
+    Classification task. n_classes = 2.
+    higgs_150K X train dataset (100000, 28)
+    higgs_150K y train dataset (50000, 1)
+    higgs_150K X test dataset  (100000,  28)
+    higgs_150K y test dataset  (50000,  1)
+    """
+    dataset_name = 'higgs_150K'
+    os.makedirs(dataset_dir, exist_ok=True)
+
+    url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz'
+    local_url = os.path.join(dataset_dir, os.path.basename(url))
+    if not os.path.isfile(local_url):
+        logging.info(f'Started loading {dataset_name}')
+        retrieve(url, local_url)
+    logging.info(f'{dataset_name} is loaded, started parsing...')
+
+    nrows_train, nrows_test, dtype = 100000, 50000, np.float32
+    data: Any = pd.read_csv(local_url, delimiter=",", header=None,
+                            compression="gzip", dtype=dtype,
+                            nrows=nrows_train + nrows_test)
+
+    X = data[data.columns[1:]]
+    y =  data[data.columns[0:1]]
+
+    x_train, x_test, y_train, y_test = train_test_split(
+        X, y, train_size=nrows_train, test_size=nrows_test, shuffle=False)
+
+    for data, name in zip((x_train, x_test, y_train, y_test),
+                          ('x_train', 'x_test', 'y_train', 'y_test')):
+        filename = f'{dataset_name}_{name}.npy'
+        np.save(os.path.join(dataset_dir, filename), data)
+    logging.info(f'dataset {dataset_name} is ready.')
+    return True
+
+
+def higgs_10500K(dataset_dir: Path) -> bool:
+    """
+    Higgs dataset from UCI machine learning repository
+    https://archive.ics.uci.edu/ml/datasets/HIGGS
+
+    Classification task. n_classes = 2.
+    higgs_10500K X train dataset (10500000, 28)
+    higgs_10500K y train dataset (10500000, 1)
+    higgs_10500K X test dataset  (500000,  28)
+    higgs_10500K y test dataset  (500000,  1)
+    """
+    dataset_name = 'higgs10500K'
+    os.makedirs(dataset_dir, exist_ok=True)
+
+    url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz'
+    local_url = os.path.join(dataset_dir, os.path.basename(url))
+    if not os.path.isfile(local_url):
+        logging.info(f'Started loading {dataset_name}')
+        retrieve(url, local_url)
+    logging.info(f'{dataset_name} is loaded, started parsing...')
+
+    nrows_train, nrows_test, dtype = 10500000, 500000, np.float32
+    data: Any = pd.read_csv(local_url, delimiter=",", header=None,
+                            compression="gzip", dtype=dtype,
+                            nrows=nrows_train + nrows_test)
+
+    X = data[data.columns[1:]]
+    y =  data[data.columns[0:1]]
+
+    x_train, x_test, y_train, y_test = train_test_split(
+        X, y, train_size=nrows_train, test_size=nrows_test, shuffle=False)
+
+    for data, name in zip((x_train, x_test, y_train, y_test),
+                          ('x_train', 'x_test', 'y_train', 'y_test')):
+        filename = f'{dataset_name}_{name}.npy'
+        np.save(os.path.join(dataset_dir, filename), data)
+    logging.info(f'dataset {dataset_name} is ready.')
+    return True
+
+
+def susy(dataset_dir: Path) -> bool:
+    """
+    SUSY dataset from UCI machine learning repository (
+    https://archive.ics.uci.edu/ml/datasets/SUSY).
+    
+    Classification task. n_classes = 2.
+    susy X train dataset (4500000, 28)
+    susy y train dataset (4500000, 1)
+    susy X test dataset  (500000,  28)
+    susy y test dataset  (500000,  1)
+    """
+    dataset_name = 'susy'
+    os.makedirs(dataset_dir, exist_ok=True)
+
+    url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00279/SUSY.csv.gz'
+    local_url = os.path.join(dataset_dir, os.path.basename(url))
+    if not os.path.isfile(local_url):
+        logging.info(f'Started loading {dataset_name}')
+        retrieve(url, local_url)
+    logging.info(f'{dataset_name} is loaded, started parsing...')
+
+    nrows_train, nrows_test, dtype = 4500000, 500000, np.float32
+    data: Any = pd.read_csv(local_url, delimiter=",", header=None,
+                            compression="gzip", dtype=dtype,
+                            nrows=nrows_train + nrows_test)
+
+    X = data[data.columns[1:]]
+    y =  data[data.columns[0:1]]
+
+    x_train, x_test, y_train, y_test = train_test_split(
+        X, y, train_size=nrows_train, test_size=nrows_test, shuffle=False)
+
+    for data, name in zip((x_train, x_test, y_train, y_test),
+                          ('x_train', 'x_test', 'y_train', 'y_test')):
+        filename = f'{dataset_name}_{name}.npy'
+        np.save(os.path.join(dataset_dir, filename), data)
+    logging.info(f'dataset {dataset_name} is ready.')
+    return True
+
+
+def hepmass_1M(dataset_dir: Path) -> bool:
+    """
+    HEPMASS dataset from UCI machine learning repository (
+    https://archive.ics.uci.edu/ml/datasets/HEPMASS).
+    
+    Classification task. n_classes = 2.
+    hepmass_1M X train dataset (1000000, 28)
+    hepmass_1M y train dataset (1000000, 1)
+    hepmass_1M X test dataset  (500000,  28)
+    hepmass_1M y test dataset  (500000,  1)
+    """
+    dataset_name = 'hepmass_1M'
+    os.makedirs(dataset_dir, exist_ok=True)
+
+    url_test = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00347/all_test.csv.gz'
+    url_train = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00347/all_train.csv.gz'
+
+    local_url_test = os.path.join(dataset_dir, os.path.basename(url_test))
+    local_url_train = os.path.join(dataset_dir, os.path.basename(url_train))
+
+    if not os.path.isfile(local_url_test):
+        logging.info(f'Started loading {dataset_name}, test')
+        retrieve(url_test, local_url_test)
+    if not os.path.isfile(local_url_train):
+        logging.info(f'Started loading {dataset_name}, train')
+        retrieve(url_train, local_url_train)
+    logging.info(f'{dataset_name} is loaded, started parsing...')
+
+    nrows_train, nrows_test, dtype = 1000000, 500000, np.float32
+    data_test: Any = pd.read_csv(local_url_test, delimiter=",",
+                            compression="gzip", dtype=dtype,
+                            nrows=nrows_test)
+    data_train: Any = pd.read_csv(local_url_train, delimiter=",",
+                            compression="gzip", dtype=dtype,
+                            nrows=nrows_train)
+
+    x_test = np.ascontiguousarray(data_test.values[:nrows_test, 1:], dtype=dtype)
+    y_test = np.ascontiguousarray(data_test.values[:nrows_test, 0], dtype=dtype)
+    x_train = np.ascontiguousarray(data_train.values[:nrows_train, 1:], dtype=dtype)
+    y_train = np.ascontiguousarray(data_train.values[:nrows_train, 0], dtype=dtype)
+
+    for data, name in zip((x_train, x_test, y_train, y_test),
+                          ('x_train', 'x_test', 'y_train', 'y_test')):
+        filename = f'{dataset_name}_{name}.npy'
+        np.save(os.path.join(dataset_dir, filename), data)
+    logging.info(f'dataset {dataset_name} is ready.')
+    return True
+
+
+def hepmass_150K(dataset_dir: Path) -> bool:
+    """
+    HEPMASS dataset from UCI machine learning repository (
+    https://archive.ics.uci.edu/ml/datasets/HEPMASS).
+    
+    Classification task. n_classes = 2.
+    hepmass_150K X train dataset (100000, 28)
+    hepmass_150K y train dataset (100000, 1)
+    hepmass_150K X test dataset  (50000,  28)
+    hepmass_150K y test dataset  (50000,  1)
+    """
+    dataset_name = 'hepmass_150K'
+    os.makedirs(dataset_dir, exist_ok=True)
+
+    url_test = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00347/all_test.csv.gz'
+    url_train = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00347/all_train.csv.gz'
+
+    local_url_test = os.path.join(dataset_dir, os.path.basename(url_test))
+    local_url_train = os.path.join(dataset_dir, os.path.basename(url_train))
+
+    if not os.path.isfile(local_url_test):
+        logging.info(f'Started loading {dataset_name}, test')
+        retrieve(url_test, local_url_test)
+    if not os.path.isfile(local_url_train):
+        logging.info(f'Started loading {dataset_name}, train')
+        retrieve(url_train, local_url_train)
+    logging.info(f'{dataset_name} is loaded, started parsing...')
+
+    nrows_train, nrows_test, dtype = 100000, 50000, np.float32
+    data_test: Any = pd.read_csv(local_url_test, delimiter=",",
+                            compression="gzip", dtype=dtype,
+                            nrows=nrows_test)
+    data_train: Any = pd.read_csv(local_url_train, delimiter=",",
+                            compression="gzip", dtype=dtype,
+                            nrows=nrows_train)
+
+    x_test = np.ascontiguousarray(data_test.values[:nrows_test, 1:], dtype=dtype)
+    y_test = np.ascontiguousarray(data_test.values[:nrows_test, 0], dtype=dtype)
+    x_train = np.ascontiguousarray(data_train.values[:nrows_train, 1:], dtype=dtype)
+    y_train = np.ascontiguousarray(data_train.values[:nrows_train, 0], dtype=dtype)
+
+    for data, name in zip((x_train, x_test, y_train, y_test),
                           ('x_train', 'x_test', 'y_train', 'y_test')):
         filename = f'{dataset_name}_{name}.npy'
         np.save(os.path.join(dataset_dir, filename), data)
@@ -637,3 +886,106 @@ def skin_segmentation(dataset_dir: Path) -> bool:
         np.save(os.path.join(dataset_dir, filename), data)
     logging.info(f'dataset {dataset_name} is ready.')
     return True
+
+
+# def epsilon_50K(dataset_dir: Path) -> bool:
+#     """
+#     Epsilon dataset
+#     https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html
+
+#     Classification task. n_classes = 2.
+#     epsilon_50K x train dataset (50000, 2000)
+#     epsilon_50K y train dataset (50000, 1)
+#     """
+#     dataset_name = 'epsilon_50K'
+#     os.makedirs(dataset_dir, exist_ok=True)
+
+#     url= 'https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary' \
+#                 '/epsilon_normalized.bz2'
+#     local_url = os.path.join(dataset_dir, os.path.basename(url))
+
+#     num_train = 50000
+#     if not os.path.isfile(local_url):
+#         logging.info(f'Started loading {dataset_name}')
+#         retrieve(url, local_url)
+#     logging.info(f'{dataset_name} is loaded, started parsing...')
+#     X_train, y_train = load_svmlight_file(local_url,
+#                                         dtype=np.float32)
+
+#     X_train = X_train.toarray()[:num_train]
+#     y_train = y_train[:num_train]
+#     y_train[y_train <= 0] = 0
+
+#     for data, name in zip((X_train, y_train),
+#                           ('x_train', 'y_train')):
+#         filename = f'{dataset_name}_{name}.npy'
+#         np.save(os.path.join(dataset_dir, filename), data)
+#     return True
+
+
+# def cifar(dataset_dir: Path) -> bool:
+#     """
+#     Cifar dataset from LIBSVM Datasets (
+#     https://www.cs.toronto.edu/~kriz/cifar.html#cifar)
+#     TaskType: Classification
+#     cifar x train dataset (50000, 3072)
+#     cifar y train dataset (50000, 1)
+#     """
+#     dataset_name = 'cifar'
+#     os.makedirs(dataset_dir, exist_ok=True)
+
+#     url= 'https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/cifar10.bz2'
+#     local_url = os.path.join(dataset_dir, os.path.basename(url))
+
+#     if not os.path.isfile(local_url):
+#         logging.info(f'Started loading {dataset_name}')
+#         retrieve(url, local_url)
+#     logging.info(f'{dataset_name} is loaded, started parsing...')
+#     X_train, y_train = load_svmlight_file(local_url,
+#                                         dtype=np.float32)
+
+#     X_train = X_train.toarray()
+#     y_train[y_train <= 0] = 0
+
+#     for data, name in zip((X_train, y_train),
+#                           ('x_train', 'y_train')):
+#         filename = f'{dataset_name}_{name}.npy'
+#         np.save(os.path.join(dataset_dir, filename), data)
+#     return True
+
+
+# def hepmass_10K(dataset_dir: Path) -> bool:
+#     """
+#     HEPMASS dataset from UCI machine learning repository (
+#     https://archive.ics.uci.edu/ml/datasets/HEPMASS).
+    
+#     Classification task. n_classes = 2.
+#     hepmass_10K X train dataset (10000, 28)
+#     hepmass_10K y train dataset (10000, 1)
+#     """
+#     dataset_name = 'hepmass_10K'
+#     os.makedirs(dataset_dir, exist_ok=True)
+
+#     url_train = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00347/all_train.csv.gz'
+
+#     local_url_train = os.path.join(dataset_dir, os.path.basename(url_train))
+
+#     if not os.path.isfile(local_url_train):
+#         logging.info(f'Started loading {dataset_name}, train')
+#         retrieve(url_train, local_url_train)
+#     logging.info(f'{dataset_name} is loaded, started parsing...')
+
+#     nrows_train, dtype = 10000, np.float32
+#     data_train: Any = pd.read_csv(local_url_train, delimiter=",",
+#                             compression="gzip", dtype=dtype,
+#                             nrows=nrows_train)
+
+#     x_train = np.ascontiguousarray(data_train.values[:nrows_train, 1:], dtype=dtype)
+#     y_train = np.ascontiguousarray(data_train.values[:nrows_train, 0], dtype=dtype)
+
+#     for data, name in zip((x_train, y_train),
+#                           ('x_train', 'y_train')):
+#         filename = f'{dataset_name}_{name}.npy'
+#         np.save(os.path.join(dataset_dir, filename), data)
+#     logging.info(f'dataset {dataset_name} is ready.')
+#     return True

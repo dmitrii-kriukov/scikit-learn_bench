@@ -22,8 +22,8 @@ from pathlib import Path
 from typing import Callable, Dict
 
 from .loader_classification import (a_nine_a, airline, airline_ohe, bosch,
-                                    census, codrnanorm, creditcard, epsilon, fraud,
-                                    gisette, higgs, higgs_one_m, ijcnn,
+                                    census, codrnanorm, creditcard, epsilon, epsilon_100K, cifar, fraud,
+                                    gisette, higgs, higgs_one_m, higgs_150K, higgs_10500K, susy, hepmass_1M, hepmass_150K, hepmass_10K, ijcnn,
                                     klaverjas, santander, skin_segmentation)
 from .loader_multiclass import (connect, covertype, covtype, letters, mlsr,
                                 mnist, msrank, plasticc, sensit)
@@ -46,11 +46,19 @@ dataset_loaders: Dict[str, Callable[[Path], bool]] = {
     "covtype": covtype,
     "creditcard": creditcard,
     "epsilon": epsilon,
+    "epsilon_100K": epsilon_100K,
+    "cifar": cifar,
     "fraud": fraud,
     "fried": fried,
     "gisette": gisette,
     "higgs": higgs,
+    "higgs_150K": higgs_150K,
     "higgs1m": higgs_one_m,
+    "higgs10500K": higgs_10500K,
+    "susy": susy,
+    "hepmass_1M": hepmass_1M,
+    "hepmass_150K": hepmass_150K,
+    "hepmass_10K": hepmass_10K,
     "ijcnn": ijcnn,
     "klaverjas": klaverjas,
     "letters": letters,
