@@ -12,10 +12,10 @@
             "dataset": [
                 {
                     "source": "npy",
-                    "name": "higgs1m",
+                    "name": "higgs_one_m_clustering",
                     "training":
                     {
-                        "x": "data/higgs1m_x_train.npy"
+                        "x": "data/higgs_one_m_clustering.npy"
                     }
                 }
             ],
@@ -27,10 +27,10 @@
             "dataset": [
                 {
                     "source": "npy",
-                    "name": "higgs1m",
+                    "name": "higgs_one_m_clustering",
                     "training":
                     {
-                        "x": "data/higgs1m_x_train.npy"
+                        "x": "data/higgs_one_m_clustering.npy"
                     }
                 }
             ],
@@ -42,10 +42,10 @@
             "dataset": [
                 {
                     "source": "npy",
-                    "name": "epsilon_50K",
+                    "name": "epsilon_50K_cluster",
                     "training":
                     {
-                        "x": "data/epsilon_50K_x_train.npy"
+                        "x": "data/epsilon_50K_cluster.npy"
                     }
                 }
             ],
@@ -57,10 +57,10 @@
             "dataset": [
                 {
                     "source": "npy",
-                    "name": "hepmass_1M",
+                    "name": "hepmass_1M_cluster",
                     "training":
                     {
-                        "x": "data/hepmass_1M_x_train.npy"
+                        "x": "data/hepmass_1M_cluster.npy"
                     }
                 }
             ],
@@ -72,10 +72,10 @@
             "dataset": [
                 {
                     "source": "npy",
-                    "name": "hepmass_1M",
+                    "name": "hepmass_1M_cluster",
                     "training":
                     {
-                        "x": "data/hepmass_1M_x_train.npy"
+                        "x": "data/hepmass_1M_cluster.npy"
                     }
                 }
             ],
@@ -87,10 +87,10 @@
             "dataset": [
                 {
                     "source": "npy",
-                    "name": "cifar",
+                    "name": "cifar_cluster",
                     "training":
                     {
-                        "x": "data/cifar_x_train.npy"
+                        "x": "data/cifar_cluster.npy"
                     }
                 }
             ],

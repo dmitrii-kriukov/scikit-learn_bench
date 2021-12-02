@@ -3,7 +3,6 @@
         "lib": "sklearn",
         "data-format": "pandas",
         "data-order": "F",
-        "dtype": "float32",
         "device": "gpu"
     },
     "cases": [
@@ -25,6 +24,21 @@
             "min-samples": 3
         },
         {
+            "algorithm": "dbscan",
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "road_network_20K_cluster",
+                    "training":
+                    {
+                        "x": "data/road_network_20K_cluster.npy"
+                    }
+                }
+            ],
+            "eps": 1.0e3,
+            "min-samples": 220
+        },
+        {
             "algorithm": "kmeans",
             "dataset": [
                 {
@@ -42,6 +56,7 @@
                     }
                 }
             ],
+            "dtype": "float32",
             "n-clusters": 10,
             "maxiter": 100,
             "tol": 0.0
@@ -64,9 +79,43 @@
                     }
                 }
             ],
+            "dtype": "float32",
             "n-clusters": [100, 250],
             "maxiter": 10,
             "tol": 0.0
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "gist_150K",
+                    "training":
+                    {
+                        "x": "data/gist_150K_x_train.npy",
+                        "y": "data/gist_150K_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/gist_150K_x_test.npy",
+                        "y": "data/gist_150K_y_test.npy"
+                    }
+                },
+                {
+                    "source": "npy",
+                    "name": "gist_300K",
+                    "training":
+                    {
+                        "x": "data/gist_300K_x_train.npy",
+                        "y": "data/gist_300K_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/gist_300K_x_test.npy",
+                        "y": "data/gist_300K_y_test.npy"
+                    }
+                }
+            ],
+            "n-neighbors": 3
         }
     ]
 }

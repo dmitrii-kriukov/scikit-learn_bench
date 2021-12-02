@@ -23,13 +23,17 @@ from typing import Callable, Dict
 
 from .loader_classification import (a_nine_a, airline, airline_ohe, bosch,
                                     census, codrnanorm, creditcard, epsilon, epsilon_100K, cifar, fraud,
-                                    gisette, higgs, higgs_one_m, higgs_150K, higgs_10500K, susy, hepmass_1M, hepmass_150K, hepmass_10K, ijcnn,
+                                    gisette, higgs, higgs_one_m, higgs_150K, higgs_10500K, susy,
+                                    hepmass_1M,hepmass_150K, ijcnn,
                                     klaverjas, santander, skin_segmentation)
 from .loader_multiclass import (connect, covertype, covtype, letters, mlsr,
                                 mnist, msrank, plasticc, sensit)
 from .loader_regression import (abalone, california_housing, fried,
                                 medical_charges_nominal, mortgage_first_q,
                                 twodplanes, year_prediction_msd, yolanda, airline_regression)
+
+from .loader_clustering import (epsilon_50K_cluster, cifar_cluster, higgs_one_m_clustering,
+                                hepmass_1M_cluster, hepmass_10K_cluster, road_network_20K_cluster)
 
 dataset_loaders: Dict[str, Callable[[Path], bool]] = {
     "a9a": a_nine_a,
@@ -46,19 +50,23 @@ dataset_loaders: Dict[str, Callable[[Path], bool]] = {
     "covtype": covtype,
     "creditcard": creditcard,
     "epsilon": epsilon,
+    "epsilon_50K_cluster": epsilon_50K_cluster,
     "epsilon_100K": epsilon_100K,
     "cifar": cifar,
+    "cifar_cluster": cifar_cluster,
     "fraud": fraud,
     "fried": fried,
     "gisette": gisette,
     "higgs": higgs,
-    "higgs_150K": higgs_150K,
     "higgs1m": higgs_one_m,
+    "higgs_one_m_clustering": higgs_one_m_clustering,
+    "higgs_150K": higgs_150K,
     "higgs10500K": higgs_10500K,
     "susy": susy,
     "hepmass_1M": hepmass_1M,
+    "hepmass_1M_cluster": hepmass_1M_cluster,
     "hepmass_150K": hepmass_150K,
-    "hepmass_10K": hepmass_10K,
+    "hepmass_10K_cluster": hepmass_10K_cluster,
     "ijcnn": ijcnn,
     "klaverjas": klaverjas,
     "letters": letters,
@@ -68,6 +76,7 @@ dataset_loaders: Dict[str, Callable[[Path], bool]] = {
     "mortgage1Q": mortgage_first_q,
     "msrank": msrank,
     "plasticc": plasticc,
+    "road_network_20K_cluster": road_network_20K_cluster,
     "santander": santander,
     "sensit": sensit,
     "skin_segmentation": skin_segmentation,

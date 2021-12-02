@@ -1,6 +1,7 @@
 {
     "common": {
         "lib": "sklearn",
+        "algorithm": "knn_clsf",
         "data-format": "pandas",
         "data-order": "F",
         "dtype": "float32",
@@ -8,7 +9,6 @@
     },
     "cases": [
         {
-            "algorithm": "knn_clsf",
             "dataset": [
                 {
                     "source": "npy",
@@ -54,6 +54,44 @@
                 }
             ],
             "n-neighbors": [5, 100]
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "cifar",
+                    "training":
+                    {
+                        "x": "data/cifar_x_train.npy",
+                        "y": "data/cifar_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/cifar_x_test.npy",
+                        "y": "data/cifar_y_test.npy"
+                    }
+                }
+            ],
+            "n-neighbors": 7
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "mnist",
+                    "training":
+                    {
+                        "x": "data/mnist_x_train.npy",
+                        "y": "data/mnist_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/mnist_x_test.npy",
+                        "y": "data/mnist_y_test.npy"
+                    }
+                }
+            ],
+            "n-neighbors": 5
         }
     ]
 }

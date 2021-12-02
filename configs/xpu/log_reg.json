@@ -1,7 +1,7 @@
 {
     "common": {
         "lib": "sklearn",
-        "algorithm": "knn_regr",
+        "algorithm": "log_reg",
         "data-format": "pandas",
         "data-order": "F",
         "dtype": "float32",
@@ -12,77 +12,78 @@
             "dataset": [
                 {
                     "source": "npy",
-                    "name": "year_prediction_msd",
+                    "name": "susy",
                     "training":
                     {
-                        "x": "data/year_prediction_msd_x_train.npy",
-                        "y": "data/year_prediction_msd_y_train.npy"
+                        "x": "data/susy_x_train.npy",
+                        "y": "data/susy_y_train.npy"
                     },
                     "testing":
                     {
-                        "x": "data/year_prediction_msd_x_test.npy",
-                        "y": "data/year_prediction_msd_y_test.npy"
+                        "x": "data/susy_x_test.npy",
+                        "y": "data/susy_y_test.npy"
                     }
                 }
             ],
-            "n-neighbors": 2
+            "maxiter": "20"
         },
         {
             "dataset": [
                 {
                     "source": "npy",
-                    "name": "higgs_150K",
+                    "name": "susy",
                     "training":
                     {
-                        "x": "data/higgs_150K_x_train.npy",
-                        "y": "data/higgs_150K_y_train.npy"
+                        "x": "data/susy_x_train.npy",
+                        "y": "data/susy_y_train.npy"
                     },
                     "testing":
                     {
-                        "x": "data/higgs_150K_x_test.npy",
-                        "y": "data/higgs_150K_y_test.npy"
+                        "x": "data/susy_x_test.npy",
+                        "y": "data/susy_y_test.npy"
                     }
                 }
             ],
-            "n-neighbors": 5
+            "maxiter": "10"
         },
         {
             "dataset": [
                 {
                     "source": "npy",
-                    "name": "gist_150K",
+                    "name": "mnist",
                     "training":
                     {
-                        "x": "data/gist_150K_x_train.npy",
-                        "y": "data/gist_150K_y_train.npy"
+                        "x": "data/mnist_x_train.npy",
+                        "y": "data/mnist_y_train.npy"
                     },
                     "testing":
                     {
-                        "x": "data/gist_150K_x_test.npy",
-                        "y": "data/gist_150K_y_test.npy"
+                        "x": "data/mnist_x_test.npy",
+                        "y": "data/mnist_y_test.npy"
                     }
                 }
             ],
-            "n-neighbors": 3
+            "no-fit-intercept": "",
+            "maxiter": "50"
         },
         {
             "dataset": [
                 {
                     "source": "npy",
-                    "name": "cifar",
+                    "name": "mnist",
                     "training":
                     {
-                        "x": "data/cifar_x_train.npy",
-                        "y": "data/cifar_y_train.npy"
+                        "x": "data/mnist_x_train.npy",
+                        "y": "data/mnist_y_train.npy"
                     },
                     "testing":
                     {
-                        "x": "data/cifar_x_test.npy",
-                        "y": "data/cifar_y_test.npy"
+                        "x": "data/mnist_x_test.npy",
+                        "y": "data/mnist_y_test.npy"
                     }
                 }
             ],
-            "n-neighbors": 7
+            "maxiter": "500"
         }
     ]
 }
