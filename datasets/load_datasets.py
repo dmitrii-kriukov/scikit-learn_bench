@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Callable, Dict
 
 from .loader_classification import (a_nine_a, airline, airline_ohe, bosch,
-                                    census, codrnanorm, creditcard, epsilon, epsilon_100K, cifar, fraud,
+                                    census, codrnanorm, creditcard, epsilon, epsilon_30K, epsilon_100K, cifar, fraud,
                                     gisette, higgs, higgs_one_m, higgs_150K, higgs_10500K, susy,
                                     hepmass_1M,hepmass_150K, ijcnn,
                                     klaverjas, santander, skin_segmentation)
@@ -51,6 +51,7 @@ dataset_loaders: Dict[str, Callable[[Path], bool]] = {
     "creditcard": creditcard,
     "epsilon": epsilon,
     "epsilon_50K_cluster": epsilon_50K_cluster,
+    "epsilon_30K": epsilon_30K,
     "epsilon_100K": epsilon_100K,
     "cifar": cifar,
     "cifar_cluster": cifar_cluster,

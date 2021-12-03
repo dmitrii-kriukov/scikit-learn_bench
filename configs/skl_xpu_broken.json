@@ -116,6 +116,56 @@
                 }
             ],
             "n-neighbors": 3
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "higgs1m",
+                    "algorithm": "pca",
+                    "dtype": "float32",
+                    "training":
+                    {
+                        "x": "data/higgs1m_x_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/higgs1m_x_test.npy"
+                    }
+                }
+            ]
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "epsilon_30K",
+                    "training":
+                    {
+                        "x": "data/epsilon_30K_x_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/epsilon_30K_x_test.npy"
+                    }
+                }
+            ]
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "cifar",
+                    "training":
+                    {
+                        "x": "data/cifar_x_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/cifar_x_test.npy"
+                    }
+                }
+            ]
         }
     ]
 }

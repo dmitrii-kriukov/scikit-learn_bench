@@ -333,6 +333,47 @@ def epsilon(dataset_dir: Path) -> bool:
     logging.info(f'dataset {dataset_name} is ready.')
     return True
 
+def epsilon_30K(dataset_dir: Path) -> bool:
+    """
+    Epsilon dataset
+    https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html
+
+    Classification task. n_classes = 2.
+    epsilon_30K x train dataset (30000, 2000)
+    epsilon_30K x test dataset (30000, 2000)
+    """
+    dataset_name = 'epsilon_30K'
+    os.makedirs(dataset_dir, exist_ok=True)
+
+    url_train = 'https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary' \
+                '/epsilon_normalized.bz2'
+    url_test = 'https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary' \
+               '/epsilon_normalized.t.bz2'
+    local_url_train = os.path.join(dataset_dir, os.path.basename(url_train))
+    local_url_test = os.path.join(dataset_dir, os.path.basename(url_test))
+
+    num_train, num_test, dtype = 30000, 30000, np.float32
+    if not os.path.isfile(local_url_train):
+        logging.info(f'Started loading {dataset_name}, train')
+        retrieve(url_train, local_url_train)
+    if not os.path.isfile(local_url_test):
+        logging.info(f'Started loading {dataset_name}, test')
+        retrieve(url_test, local_url_test)
+    logging.info(f'{dataset_name} is loaded, started parsing...')
+    X_train, _ = load_svmlight_file(local_url_train,
+                                          dtype=dtype)
+    X_test, _ = load_svmlight_file(local_url_test,
+                                        dtype=dtype)
+    X_train = X_train.toarray()[:num_train]
+    X_test = X_test.toarray()[:num_test]
+
+    for data, name in zip((X_train, X_test),
+                          ('x_train', 'x_test')):
+        filename = f'{dataset_name}_{name}.npy'
+        np.save(os.path.join(dataset_dir, filename), data)
+    logging.info(f'dataset {dataset_name} is ready.')
+    return True
+
 
 def epsilon_100K(dataset_dir: Path) -> bool:
     """
