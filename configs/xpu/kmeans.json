@@ -3,13 +3,21 @@
         "lib": "sklearn",
         "algorithm": "kmeans",
         "data-format": "pandas",
+<<<<<<< HEAD
         "data-order": "F",
+=======
+        "data-order": "C",
+>>>>>>> aa4705e4eec0183f831a5912b6cbd0e22c419fa2
         "dtype": ["float64"],
         "device": ["host", "cpu", "gpu", "none"]
     },
     "cases": [
         {
+<<<<<<< HEAD
              "dataset": [
+=======
+            "dataset": [
+>>>>>>> aa4705e4eec0183f831a5912b6cbd0e22c419fa2
                 {
                     "source": "npy",
                     "name": "higgs_one_m_clustering",

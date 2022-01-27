@@ -22,17 +22,19 @@ from pathlib import Path
 from typing import Callable, Dict
 
 from .loader_classification import (a_nine_a, airline, airline_ohe, bosch,
-                                    census, codrnanorm, creditcard, epsilon, epsilon_30K, fraud,
-                                    gisette, higgs, higgs_one_m, ijcnn,
-                                    klaverjas, santander, skin_segmentation)
+                                    census, codrnanorm, cifar_binary, creditcard, epsilon,
+                                    epsilon_30K, fraud, gisette, hepmass_150K, higgs,
+                                    higgs_one_m, ijcnn, klaverjas, santander, skin_segmentation,
+                                    susy)
 from .loader_multiclass import (connect, covertype, covtype, letters, mlsr,
                                 mnist, msrank, plasticc, sensit)
-from .loader_regression import (abalone, california_housing, fried,
+from .loader_regression import (abalone, california_housing, fried, higgs_10500K,
                                 medical_charges_nominal, mortgage_first_q,
                                 twodplanes, year_prediction_msd, yolanda, airline_regression)
 from .loader_clustering import (cifar_cluster, epsilon_50K_cluster, higgs_one_m_clustering,
                                 hepmass_1M_cluster, hepmass_10K_cluster, mnist_10K_cluster,
-                                road_network_20K_cluster,susy_cluster)
+                                road_network_20K_cluster, susy_cluster)
+
 
 dataset_loaders: Dict[str, Callable[[Path], bool]] = {
     "a9a": a_nine_a,
@@ -43,7 +45,8 @@ dataset_loaders: Dict[str, Callable[[Path], bool]] = {
     "bosch": bosch,
     "california_housing": california_housing,
     "census": census,
-    "cifar_cluster" : cifar_cluster,
+    "cifar_binary": cifar_binary,
+    "cifar_cluster": cifar_cluster,
     "codrnanorm": codrnanorm,
     "connect": connect,
     "covertype": covertype,
@@ -51,15 +54,17 @@ dataset_loaders: Dict[str, Callable[[Path], bool]] = {
     "creditcard": creditcard,
     "epsilon": epsilon,
     "epsilon_30K": epsilon_30K,
-    "epsilon_50K_cluster" : epsilon_50K_cluster,
+    "epsilon_50K_cluster": epsilon_50K_cluster,
     "fraud": fraud,
     "fried": fried,
     "gisette": gisette,
+    "hepmass_150K": hepmass_150K,
     "hepmass_1M_cluster": hepmass_1M_cluster,
     "hepmass_10K_cluster": hepmass_10K_cluster,
     "higgs": higgs,
     "higgs1m": higgs_one_m,
     "higgs_one_m_clustering": higgs_one_m_clustering,
+    "higgs_10500K": higgs_10500K,
     "ijcnn": ijcnn,
     "klaverjas": klaverjas,
     "letters": letters,
@@ -74,7 +79,12 @@ dataset_loaders: Dict[str, Callable[[Path], bool]] = {
     "santander": santander,
     "sensit": sensit,
     "skin_segmentation": skin_segmentation,
+<<<<<<< HEAD
     "susy_cluster" susy_cluster,
+=======
+    "susy_cluster": susy_cluster,
+    "susy": susy,
+>>>>>>> aa4705e4eec0183f831a5912b6cbd0e22c419fa2
     "twodplanes": twodplanes,
     "year_prediction_msd": year_prediction_msd,
     "yolanda": yolanda,

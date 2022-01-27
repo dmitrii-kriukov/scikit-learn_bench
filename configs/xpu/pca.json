@@ -39,11 +39,19 @@
             "dataset": [
                 {
                     "source": "npy",
+<<<<<<< HEAD
                     "name": "cifar_cluster",
                     "training":
                     {
                         "x": "data/cifar_x_train.npy",
                         "y": "data/cifar_y_train.npy"
+=======
+                    "name": "cifar_binary",
+                    "training":
+                    {
+                        "x": "data/cifar_binary_x_train.npy",
+                        "y": "data/cifar_binary_y_train.npy"
+>>>>>>> aa4705e4eec0183f831a5912b6cbd0e22c419fa2
                     }
                 }
             ]

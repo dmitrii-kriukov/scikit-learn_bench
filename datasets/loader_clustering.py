@@ -16,7 +16,6 @@
 
 import logging
 import os
-import subprocess
 from pathlib import Path
 from typing import Any
 
@@ -39,8 +38,8 @@ def epsilon_50K_cluster(dataset_dir: Path) -> bool:
     dataset_name = 'epsilon_50K_cluster'
     os.makedirs(dataset_dir, exist_ok=True)
 
-    url= 'https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary' \
-                '/epsilon_normalized.bz2'
+    url = 'https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary' \
+          '/epsilon_normalized.bz2'
     local_url = os.path.join(dataset_dir, os.path.basename(url))
 
     num_train = 50000
@@ -49,12 +48,8 @@ def epsilon_50K_cluster(dataset_dir: Path) -> bool:
         retrieve(url, local_url)
     logging.info(f'{dataset_name} is loaded, started parsing...')
     x_train, y_train = load_svmlight_file(local_url,
-                                        dtype=np.float32)
-
-    x_train = x_train.toarray()[:num_train]
-    y_train = y_train[:num_train]
+                                          dtype=np.float32)
     y_train[y_train <= 0] = 0
-
     filename = f'{dataset_name}.npy'
     data = np.concatenate((x_train, y_train[:, None]), axis=1)
     np.save(os.path.join(dataset_dir, filename), data)
@@ -72,7 +67,7 @@ def cifar_cluster(dataset_dir: Path) -> bool:
     dataset_name = 'cifar_cluster'
     os.makedirs(dataset_dir, exist_ok=True)
 
-    url= 'https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/cifar10.bz2'
+    url = 'https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/cifar10.bz2'
     local_url = os.path.join(dataset_dir, os.path.basename(url))
 
     if not os.path.isfile(local_url):
@@ -80,10 +75,9 @@ def cifar_cluster(dataset_dir: Path) -> bool:
         retrieve(url, local_url)
     logging.info(f'{dataset_name} is loaded, started parsing...')
     x_train, y_train = load_svmlight_file(local_url,
-                                        dtype=np.float32)
-
+                                          dtype=np.float32)
     x_train = x_train.toarray()
-    y_train[y_train <= 0] = 0
+    y_train = (y_train > 0).astype(int)
 
     filename = f'{dataset_name}.npy'
     data = np.concatenate((x_train, y_train[:, None]), axis=1)
@@ -116,7 +110,7 @@ def higgs_one_m_clustering(dataset_dir: Path) -> bool:
                             nrows=nrows_train + nrows_test)
 
     X = data[data.columns[1:]]
-    y =  data[data.columns[0:1]]
+    y = data[data.columns[0:1]]
 
     x_train, _, y_train, _ = train_test_split(
         X, y, train_size=nrows_train, test_size=nrows_test, shuffle=False)
@@ -131,7 +125,6 @@ def hepmass_1M_cluster(dataset_dir: Path) -> bool:
     """
     HEPMASS dataset from UCI machine learning repository (
     https://archive.ics.uci.edu/ml/datasets/HEPMASS).
-    
     Clustering task. n_classes = 2.
     hepmass_10K X cluster dataset (1000000, 29)
     """
@@ -149,8 +142,8 @@ def hepmass_1M_cluster(dataset_dir: Path) -> bool:
 
     nrows_train, dtype = 1000000, np.float32
     data_train: Any = pd.read_csv(local_url_train, delimiter=",",
-                            compression="gzip", dtype=dtype,
-                            nrows=nrows_train)
+                                  compression="gzip", dtype=dtype,
+                                  nrows=nrows_train)
 
     x_train = np.ascontiguousarray(data_train.values[:nrows_train, 1:], dtype=dtype)
     y_train = np.ascontiguousarray(data_train.values[:nrows_train, 0], dtype=dtype)
@@ -166,7 +159,6 @@ def hepmass_10K_cluster(dataset_dir: Path) -> bool:
     """
     HEPMASS dataset from UCI machine learning repository (
     https://archive.ics.uci.edu/ml/datasets/HEPMASS).
-    
     Clustering task. n_classes = 2.
     hepmass_10K X cluster dataset (10000, 29)
     """
@@ -184,8 +176,8 @@ def hepmass_10K_cluster(dataset_dir: Path) -> bool:
 
     nrows_train, dtype = 10000, np.float32
     data_train: Any = pd.read_csv(local_url_train, delimiter=",",
-                            compression="gzip", dtype=dtype,
-                            nrows=nrows_train)
+                                  compression="gzip", dtype=dtype,
+                                  nrows=nrows_train)
 
     x_train = np.ascontiguousarray(data_train.values[:nrows_train, 1:], dtype=dtype)
     y_train = np.ascontiguousarray(data_train.values[:nrows_train, 0], dtype=dtype)
@@ -217,11 +209,11 @@ def susy_cluster(dataset_dir: Path) -> bool:
 
     nrows_train, dtype = 4500000, np.float32
     data_raw: Any = pd.read_csv(local_url, delimiter=",", header=None,
-                            compression="gzip", dtype=dtype,
-                            nrows=nrows_train + nrows_test)
+                                compression="gzip", dtype=dtype,
+                                nrows=nrows_train)
 
-    X = data_raw.iloc[:num_train, 1:].values
-    y = data_raw.iloc[:num_train, 0].values
+    X = data_raw.iloc[:nrows_train, 1:].values
+    y = data_raw.iloc[:nrows_train, 0].values
     data = np.concatenate((X, y[:, None]), axis=1)
 
     filename = f'{dataset_name}.npy'
@@ -271,7 +263,7 @@ def road_network_20K_cluster(dataset_dir: Path) -> bool:
     dataset_name = 'road_network_20K_cluster'
     os.makedirs(dataset_dir, exist_ok=True)
 
-    url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00347/all_train.csv.gz'
+    url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/00246/3D_spatial_network.txt'
 
     local_url = os.path.join(dataset_dir, os.path.basename(url))
 
@@ -280,9 +272,9 @@ def road_network_20K_cluster(dataset_dir: Path) -> bool:
         retrieve(url, local_url)
     logging.info(f'{dataset_name} is loaded, started parsing...')
 
-    nrows_train, dtype = 10000, np.float32
+    nrows_train, dtype = 20000, np.float32
     data_train: Any = pd.read_csv(local_url, dtype=dtype,
-                            nrows=nrows_train)
+                                  nrows=nrows_train)
 
     x_train = np.ascontiguousarray(data_train.values[:nrows_train, 1:], dtype=dtype)
     y_train = np.ascontiguousarray(data_train.values[:nrows_train, 0], dtype=dtype)
