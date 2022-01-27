@@ -34,7 +34,10 @@ from .loader_regression import (abalone, california_housing, fried, higgs_10500K
 from .loader_clustering import (cifar_cluster, epsilon_50K_cluster, higgs_one_m_clustering,
                                 hepmass_1M_cluster, hepmass_10K_cluster, mnist_10K_cluster,
                                 road_network_20K_cluster, susy_cluster)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9861cef9f237fe29e9c92c37747e42859a50b3a7
 
 dataset_loaders: Dict[str, Callable[[Path], bool]] = {
     "a9a": a_nine_a,
@@ -63,8 +66,13 @@ dataset_loaders: Dict[str, Callable[[Path], bool]] = {
     "hepmass_10K_cluster": hepmass_10K_cluster,
     "higgs": higgs,
     "higgs1m": higgs_one_m,
+<<<<<<< HEAD
     "higgs_one_m_clustering": higgs_one_m_clustering,
     "higgs_10500K": higgs_10500K,
+=======
+    "higgs_10500K": higgs_10500K,
+    "higgs_one_m_clustering": higgs_one_m_clustering,
+>>>>>>> 9861cef9f237fe29e9c92c37747e42859a50b3a7
     "ijcnn": ijcnn,
     "klaverjas": klaverjas,
     "letters": letters,
@@ -80,11 +88,16 @@ dataset_loaders: Dict[str, Callable[[Path], bool]] = {
     "sensit": sensit,
     "skin_segmentation": skin_segmentation,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "susy_cluster" susy_cluster,
 =======
     "susy_cluster": susy_cluster,
     "susy": susy,
 >>>>>>> aa4705e4eec0183f831a5912b6cbd0e22c419fa2
+=======
+    "susy_cluster": susy_cluster,
+    "susy": susy,
+>>>>>>> 9861cef9f237fe29e9c92c37747e42859a50b3a7
     "twodplanes": twodplanes,
     "year_prediction_msd": year_prediction_msd,
     "yolanda": yolanda,

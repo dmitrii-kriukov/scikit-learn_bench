@@ -49,6 +49,12 @@ def epsilon_50K_cluster(dataset_dir: Path) -> bool:
     logging.info(f'{dataset_name} is loaded, started parsing...')
     x_train, y_train = load_svmlight_file(local_url,
                                           dtype=np.float32)
+<<<<<<< HEAD
+=======
+
+    x_train = x_train.toarray()[:num_train]
+    y_train = y_train[:num_train]
+>>>>>>> 9861cef9f237fe29e9c92c37747e42859a50b3a7
     y_train[y_train <= 0] = 0
     filename = f'{dataset_name}.npy'
     data = np.concatenate((x_train, y_train[:, None]), axis=1)
@@ -76,6 +82,10 @@ def cifar_cluster(dataset_dir: Path) -> bool:
     logging.info(f'{dataset_name} is loaded, started parsing...')
     x_train, y_train = load_svmlight_file(local_url,
                                           dtype=np.float32)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9861cef9f237fe29e9c92c37747e42859a50b3a7
     x_train = x_train.toarray()
     y_train = (y_train > 0).astype(int)
 
@@ -121,10 +131,15 @@ def higgs_one_m_clustering(dataset_dir: Path) -> bool:
     logging.info(f'dataset {dataset_name} is ready.')
     return True
 
+
 def hepmass_1M_cluster(dataset_dir: Path) -> bool:
     """
     HEPMASS dataset from UCI machine learning repository (
     https://archive.ics.uci.edu/ml/datasets/HEPMASS).
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9861cef9f237fe29e9c92c37747e42859a50b3a7
     Clustering task. n_classes = 2.
     hepmass_10K X cluster dataset (1000000, 29)
     """
@@ -253,6 +268,7 @@ def mnist_10K_cluster(dataset_dir: Path) -> bool:
     np.save(os.path.join(dataset_dir, filename), data)
     logging.info(f'dataset {dataset_name} is ready.')
     return True
+
 
 def road_network_20K_cluster(dataset_dir: Path) -> bool:
     """

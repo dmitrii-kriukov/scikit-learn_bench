@@ -764,7 +764,10 @@ def cifar_binary(dataset_dir: Path) -> bool:
                           ('x_train', 'x_test', 'y_train', 'y_test')):
         filename = f'{dataset_name}_{name}.npy'
         np.save(os.path.join(dataset_dir, filename), data)
+<<<<<<< HEAD
     logging.info(f'dataset {dataset_name} is ready.')
+=======
+>>>>>>> 9861cef9f237fe29e9c92c37747e42859a50b3a7
     return True
 
 
