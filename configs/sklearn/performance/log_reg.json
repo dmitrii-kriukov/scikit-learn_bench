@@ -47,6 +47,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "maxiter": 100,
             "tol": 0
         },
@@ -67,6 +68,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "maxiter": "20"
         },
         {
@@ -86,6 +88,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "maxiter": "10"
         },
         {
@@ -105,6 +108,7 @@
                     }
                 }
             ],
+            "workload-size": "small",
             "no-fit-intercept": "",
             "maxiter": "50"
         },
@@ -125,6 +129,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "maxiter": "500"
         }
     ]

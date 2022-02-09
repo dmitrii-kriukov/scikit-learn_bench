@@ -3,12 +3,15 @@
         "lib": "sklearn",
         "algorithm": "svm",
         "data-format": "pandas",
-        "data-order": "F",
-        "dtype": "float64",
+        "data-order": "C",
+        "dtype": "float32",
         "device": ["host", "cpu", "gpu", "none"]
     },
     "cases": [
         {
+            "device": "none",
+            "data-order": "F",
+            "dtype": "float64",
             "dataset": [
                 {
                     "source": "npy",
@@ -25,10 +28,14 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "C": 1000.0,
             "kernel": "linear"
         },
         {
+            "device": "none",
+            "data-order": "F",
+            "dtype": "float64",
             "dataset": [
                 {
                     "source": "npy",
@@ -45,10 +52,14 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "C": 100.0,
             "kernel": "linear"
         },
         {
+            "device": "none",
+            "data-order": "F",
+            "dtype": "float64",
             "dataset": [
                 {
                     "source": "npy",
@@ -65,10 +76,14 @@
                     }
                 }
             ],
+            "workload-size": "large",
             "C": 500.0,
             "kernel": "linear"
         },
         {
+            "device": "none",
+            "data-order": "F",
+            "dtype": "float64",
             "dataset": [
                 {
                     "source": "npy",
@@ -85,10 +100,14 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "C": 1.0,
             "kernel": "rbf"
         },
         {
+            "device": "none",
+            "data-order": "F",
+            "dtype": "float64",
             "dataset": [
                 {
                     "source": "npy",
@@ -105,8 +124,33 @@
                     }
                 }
             ],
+            "workload-size": "large",
             "C": 100.0,
             "kernel": "rbf"
+        },
+        {
+            "device": "none",
+            "data-order": "F",
+            "dtype": "float64",
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "gisette",
+                    "training":
+                    {
+                        "x": "data/gisette_x_train.npy",
+                        "y": "data/gisette_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/gisette_x_test.npy",
+                        "y": "data/gisette_y_test.npy"
+                    }
+                }
+            ],
+            "workload-size": "small",
+            "C": 1.5e-3,
+            "kernel": "linear"
         },
         {
             "dataset": [
@@ -125,6 +169,7 @@
                     }
                 }
             ],
+            "workload-size": "small",
             "C": 1.5e-3,
             "kernel": "linear"
         },
@@ -145,6 +190,7 @@
                     }
                 }
             ],
+            "workload-size": "large",
             "C": 1.0,
             "kernel": "linear"
         },
@@ -165,6 +211,7 @@
                     }
                 }
             ],
+            "workload-size": "large",
             "C": 1.0,
             "kernel": "linear"
         },
@@ -185,6 +232,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "C": 1.0e-7,
             "kernel": "linear"
         },
@@ -205,6 +253,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "C": 9.0e2,
             "kernel": "rbf"
         },
@@ -225,6 +274,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "C": 1000.0,
             "kernel": "rbf"
         },
@@ -245,6 +295,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "C": 1000.0,
             "kernel": "rbf"
         }

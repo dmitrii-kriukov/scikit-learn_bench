@@ -20,6 +20,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "time-method": "box_filter",
             "time-limit": 50,
             "n-clusters": 1000,
@@ -39,6 +40,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "time-method": "box_filter",
             "time-limit": 50,
             "n-clusters": 5,
@@ -58,6 +60,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "time-method": "box_filter",
             "time-limit": 50,
             "n-clusters": 20,
@@ -75,6 +78,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "n-clusters": 10,
             "maxiter": 100
         },
@@ -89,7 +93,23 @@
                    }
                }
            ],
-           "n-clusters": [100, 250],
+           "workload-size": "small",
+           "n-clusters": 100,
+           "maxiter": 10
+        },
+        {
+            "dataset": [
+               {
+                   "source": "npy",
+                   "name": "higgs_one_m_clustering",
+                   "training":
+                   {
+                       "x": "data/higgs_one_m_clustering.npy"
+                   }
+               }
+           ],
+           "workload-size": "medium",
+           "n-clusters": 250,
            "maxiter": 10
         },
         {
@@ -103,6 +123,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "n-clusters": [512, 1024, 2048],
             "maxiter": 10
         },
@@ -117,7 +138,8 @@
                     }
                 }
             ],
-            "n-clusters": [100, 250],
+            "workload-size": "small",
+            "n-clusters": 100,
             "maxiter": 10
         },
         {
@@ -131,6 +153,22 @@
                     }
                 }
             ],
+            "workload-size": "medium",
+            "n-clusters": 250,
+            "maxiter": 10
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "hepmass_1M_cluster",
+                    "training":
+                    {
+                        "x": "data/hepmass_1M_cluster.npy"
+                    }
+                }
+            ],
+            "workload-size": "medium",
             "n-clusters": 10,
             "maxiter": 100
         },
@@ -145,6 +183,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "n-clusters": 10,
             "maxiter": 100
         },
@@ -159,6 +198,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "n-clusters": [100 , 250],
             "maxiter": 10
         },
@@ -173,6 +213,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "n-clusters": [512, 1024, 2048],
             "maxiter": 10
         }

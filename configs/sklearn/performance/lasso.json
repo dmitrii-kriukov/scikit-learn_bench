@@ -11,15 +11,21 @@
         {
             "dataset": [
                 {
-                    "source":   "npy",
-                    "name":     "mortgage1Q",
+                    "source": "npy",
+                    "name": "year_prediction_msd",
                     "training":
                     {
-                        "x":    "data/mortgage1Q_x_train.npy",
-                        "y":    "data/mortgage1Q_y_train.npy"
+                        "x": "data/year_prediction_msd_x_train.npy",
+                        "y": "data/year_prediction_msd_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/year_prediction_msd_x_test.npy",
+                        "y": "data/year_prediction_msd_y_test.npy"
                     }
                 }
             ],
+            "workload-size": "medium",
             "alpha": 1.0,
             "tol": 1e-4
         }

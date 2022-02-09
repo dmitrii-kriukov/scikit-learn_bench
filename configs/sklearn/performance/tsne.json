@@ -24,7 +24,8 @@
                         "y": "data/mnist_y_test.npy"
                     }
                 }
-            ]
+            ],
+            "workload-size": "medium"
         }
     ]
 }

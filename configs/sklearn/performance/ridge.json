@@ -27,6 +27,7 @@
                     }
                 }
             ],
+            "workload-size": "small",
             "alpha": 5
         }
     ]

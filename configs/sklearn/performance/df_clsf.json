@@ -40,6 +40,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "num-trees": 50,
             "max-depth": 16,
             "max-leaf-nodes": 131072,

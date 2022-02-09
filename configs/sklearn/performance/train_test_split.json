@@ -54,6 +54,7 @@
                     }
                 }
             ],
+            "workload-size": "small",
             "data-format": "numpy",
             "data-order": "C",
             "include-y": "",

@@ -25,6 +25,7 @@
                     }
                 }
             ],
+            "workload-size": "small",
             "nu": 0.8,
             "C": 2.0,
             "kernel": "rbf"
@@ -46,6 +47,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "nu": 0.5,
             "C": 10.0,
             "kernel": "poly",
@@ -68,6 +70,7 @@
                     }
                 }
             ],
+            "workload-size": "large",
             "nu": 0.8,
             "C": 2.0,
             "kernel": "rbf"

@@ -39,7 +39,14 @@
                     "training": {
                         "n_samples": 30000
                     }
-                },
+                }
+            ],
+            "workload-size": "small",
+            "svd-solver": "full",
+            "n-components": 10
+        },
+        {
+            "dataset": [
                 {
                     "source": "synthetic",
                     "type": "classification",
@@ -50,6 +57,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "svd-solver": "full",
             "n-components": 10
         },
@@ -64,7 +72,8 @@
                         "y": "data/higgs1m_y_train.npy"
                     }
                 }
-            ]
+            ],
+            "workload-size": "small"
         },
         {
             "device": ["host", "cpu", "gpu", "none"],
@@ -78,7 +87,8 @@
                         "y": "data/epsilon_30K_y_train.npy"
                     }
                 }
-            ]
+            ],
+            "workload-size": "small"
         },
         {
             "dataset": [
@@ -91,7 +101,8 @@
                         "y": "data/cifar_binary_y_train.npy"
                     }
                 }
-            ]
+            ],
+            "workload-size": "medium"
         }
     ]
 }

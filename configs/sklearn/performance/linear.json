@@ -27,7 +27,8 @@
                         "n_samples": 2000000
                     }
                 }
-            ]
+            ],
+            "workload-size": "medium"
         },
         {
             "dataset": [
@@ -45,7 +46,8 @@
                         "y": "data/year_prediction_msd_y_test.npy"
                     }
                 }
-            ]
+            ],
+            "workload-size": "small"
         },
         {
             "dataset": [
@@ -63,7 +65,8 @@
                         "y": "data/higgs1m_y_test.npy"
                     }
                 }
-            ]
+            ],
+            "workload-size": "small"
         }
     ]
 }

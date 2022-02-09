@@ -9,7 +9,6 @@
     },
     "cases": [
         {
-            "algorithm": "elasticnet",
             "dataset": [
                 {
                     "source": "npy",
@@ -26,6 +25,7 @@
                     }
                 }
             ],
+            "workload-size": "medium",
             "alpha": 2.0,
             "l1_ratio": 0.5,
             "tol": 1e-4
