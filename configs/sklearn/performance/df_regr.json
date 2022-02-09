@@ -24,6 +24,38 @@
                         "x": "data/year_prediction_msd_x_test.npy",
                         "y": "data/year_prediction_msd_y_test.npy"
                     }
+                },
+                {
+                    "source": "npy",
+                    "name": "airline_regression",
+                    "training":
+                    {
+                        "x": "data/airline_regression_x_train.npy",
+                        "y": "data/airline_regression_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/airline_regression_x_test.npy",
+                        "y": "data/airline_regression_y_test.npy"
+                    }
+                }
+            ]
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "year_prediction_msd",
+                    "training":
+                    {
+                        "x": "data/year_prediction_msd_x_train.npy",
+                        "y": "data/year_prediction_msd_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/year_prediction_msd_x_test.npy",
+                        "y": "data/year_prediction_msd_y_test.npy"
+                    }
                 }
             ],
             "num-trees": [10, 100],

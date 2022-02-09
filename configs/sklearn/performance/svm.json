@@ -3,11 +3,111 @@
         "lib": "sklearn",
         "algorithm": "svm",
         "data-format": "pandas",
-        "data-order": "C",
-        "dtype": "float32",
+        "data-order": "F",
+        "dtype": "float64",
         "device": ["host", "cpu", "gpu", "none"]
     },
     "cases": [
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "ijcnn",
+                    "training":
+                    {
+                        "x": "data/ijcnn_x_train.npy",
+                        "y": "data/ijcnn_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/ijcnn_x_test.npy",
+                        "y": "data/ijcnn_y_test.npy"
+                    }
+                }
+            ],
+            "C": 1000.0,
+            "kernel": "linear"
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "connect",
+                    "training":
+                    {
+                        "x": "data/connect_x_train.npy",
+                        "y": "data/connect_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/connect_x_test.npy",
+                        "y": "data/connect_y_test.npy"
+                    }
+                }
+            ],
+            "C": 100.0,
+            "kernel": "linear"
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "sensit",
+                    "training":
+                    {
+                        "x": "data/sensit_x_train.npy",
+                        "y": "data/sensit_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/sensit_x_test.npy",
+                        "y": "data/sensit_y_test.npy"
+                    }
+                }
+            ],
+            "C": 500.0,
+            "kernel": "linear"
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "skin_segmentation",
+                    "training":
+                    {
+                        "x": "data/skin_segmentation_x_train.npy",
+                        "y": "data/skin_segmentation_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/skin_segmentation_x_test.npy",
+                        "y": "data/skin_segmentation_y_test.npy"
+                    }
+                }
+            ],
+            "C": 1.0,
+            "kernel": "rbf"
+        },
+        {
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "covertype",
+                    "training":
+                    {
+                        "x": "data/covertype_x_train.npy",
+                        "y": "data/covertype_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/covertype_x_test.npy",
+                        "y": "data/covertype_y_test.npy"
+                    }
+                }
+            ],
+            "C": 100.0,
+            "kernel": "rbf"
+        },
         {
             "dataset": [
                 {
