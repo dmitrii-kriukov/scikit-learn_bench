@@ -50,6 +50,6 @@
             ],
             "method": "kd_tree",
             "n-neighbors": 5
-        },
+        }
     ]
 }
