@@ -1,0 +1,55 @@
+{
+    "common": {
+        "lib": "sklearn",
+        "data-format": "pandas",
+        "data-order": "F",
+        "dtype": ["float32", "float64"],
+        "device": ["host", "cpu", "gpu", "none"]
+    },
+    "cases": [
+        {
+            "algorithm": "knn_clsf",
+            "device": "none",
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "mnist",
+                    "training":
+                    {
+                        "x": "data/mnist_x_train.npy",
+                        "y": "data/mnist_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/mnist_x_test.npy",
+                        "y": "data/mnist_y_test.npy"
+                    }
+                }
+            ],
+            "method": "kd_tree",
+            "n-neighbors": 5
+        },
+        {
+            "algorithm": "knn_regr",
+            "device": "none",
+            "dataset": [
+                {
+                    "source": "npy",
+                    "name": "higgs_150K",
+                    "training":
+                    {
+                        "x": "data/higgs_150K_x_train.npy",
+                        "y": "data/higgs_150K_y_train.npy"
+                    },
+                    "testing":
+                    {
+                        "x": "data/higgs_150K_x_test.npy",
+                        "y": "data/higgs_150K_y_test.npy"
+                    }
+                }
+            ],
+            "method": "kd_tree",
+            "n-neighbors": 5
+        },
+    ]
+}
